@@ -2,32 +2,40 @@
 
 /**
  * push - push an integer to a stack
- * @n: integer value
+ * @line_number: integer value
  * @head: head of the structure
  * Return: void
  */
-void push(stack_t **head, int n)
+void push(stack_t **head, unsigned int line_number)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *new_node;
+	char *arg;
+	int data;
 
-	if (new_node == NULL)
+	arg = strtok(NULL, " \t\n");
+
+	if (atoi(arg) != 0)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		new_node = malloc(sizeof(stack_t));
+
+		if (new_node == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
+		/*Add data in new node*/
+		new_node->n = data;
+		/*Set next to point to head*/
+		new_node->next = *head;
+		/*Set prev pointer to NULL*/
+		new_node->prev = NULL;
+		/*If list is not empty, set prev to the curent node head*/
+		if ((*head) != NULL)
+			(*head)->prev = new_node;
+
+		*head = new_node;
 	}
-
-	/*Add data in new node*/
-	new_node->n = n;
-	/*Set next to point to head*/
-	new_node->next = *head;
-	/*Set prev pointer to NULL*/
-	new_node->prev = NULL;
-
-	/*If list is not empty, set prev to the curent node head*/
-	if ((*head) != NULL)
-		(*head)->prev = new_node;
-
-	*head = new_node;
+	free(new_node);
 }
 
 /**
@@ -38,7 +46,7 @@ void push(stack_t **head, int n)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node;
+	stack_t *new_node = *stack;
 
 	if (stack == NULL)
 	{

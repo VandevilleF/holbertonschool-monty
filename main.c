@@ -8,6 +8,10 @@
  */
 int main(int argc, char *argv[])
 {
+	char *filename;
+	stack_t *stack = NULL;
+	unsigned int line_number = 0;
+
 	/* Array of function pointers and corresponding format specifiers */
 	instruction_t func_array[] = {
 		{"push", push},
@@ -27,16 +31,15 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
-	if (argv[1] == -1)
+	if (argv[1] == NULL)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	char *filename = argv[1];
-	/* Open the file and start interpreting */
-	interpret_file(argv[1], func_array);
+	filename = argv[1];
+	interpret_file(argv[1], func_array, line_number, &stack);
+	execute_opcode(func_array, &stack, line_number);
 
 	return (EXIT_SUCCESS); /*Successful execution*/
 }
