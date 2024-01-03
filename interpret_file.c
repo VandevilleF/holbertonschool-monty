@@ -13,12 +13,10 @@ void interpret_file(const char *filename, instruction_t func_array[],
 {
 	int i = 0;
 	char line[1024]; /*Adjust the buffer size as needed*/
+	char *instruct;
+	FILE *file = fopen(filename, "r");
 
 	line_number = 1;
-	/*stack = NULL;*/
-	char *instruct;
-
-	FILE *file = fopen(filename, "r");
 
 	if (!file)
 	{

@@ -11,7 +11,6 @@ void push(stack_t **head, unsigned int line_number)
 	stack_t *new_node;
 	char *arg;
 	int data = 0;
-	(void) line_number;
 
 	arg = strtok(NULL, " \t\n");
 	data = atoi(arg);
@@ -34,6 +33,11 @@ void push(stack_t **head, unsigned int line_number)
 			(*head)->prev = new_node;
 
 		*head = new_node;
+	}
+	else
+	{
+		fprintf(stderr, "L%u: unknown instruction %d\n", line_number, data);
+		exit(EXIT_FAILURE);
 	}
 }
 
