@@ -45,5 +45,6 @@ void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
 void interpret_file(const char *filename, instruction_t func_array[],
 					unsigned int line_number, stack_t **stack);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif

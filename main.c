@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 	instruction_t func_array[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		/**
-		*{"pint", pint},
 		*{"pop", pop},
 		*{"swap", swap},
 		*{"add", add},
