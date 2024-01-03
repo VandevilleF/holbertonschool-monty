@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
 	/* Array of function pointers and corresponding format specifiers */
-	call func_array[] = {
+	instruction_t func_array[] = {
 		{"push", push},
 		{"pall", pall},
 		/**

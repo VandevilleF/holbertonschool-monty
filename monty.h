@@ -40,18 +40,8 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct call - selects the right function to be executed
- * @specifier: which function to call
- * @func_call: name of the array
- */
-typedef struct call
-{
-	char *specifier;
-	int (*func_call)(va_list);
-} call;
-
 void push(stack_t **head, int n);
 void pall(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
 
 #endif
