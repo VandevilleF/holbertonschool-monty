@@ -36,7 +36,10 @@ void push(stack_t **head, unsigned int line_number)
 		*head = new_node;
 	}
 	else
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
+	}
 }
 
 /**
