@@ -16,7 +16,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 	char *instruct;
 	FILE *file = fopen(filename, "r");
 
-	line_number = 1;
+	line_number = 0;
 
 	if (!file)
 	{

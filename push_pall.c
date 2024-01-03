@@ -10,7 +10,8 @@ void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node;
 	char *arg;
-	int data = 0;
+	int data;
+	(void) line_number;
 
 	arg = strtok(NULL, " \t\n");
 	data = atoi(arg);
@@ -35,10 +36,7 @@ void push(stack_t **head, unsigned int line_number)
 		*head = new_node;
 	}
 	else
-	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, arg);
 		exit(EXIT_FAILURE);
-	}
 }
 
 /**
