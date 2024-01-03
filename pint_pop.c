@@ -30,7 +30,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 void pop(stack_t **stack, unsigned int line_number)
  {
-	 stack_t *new_node;
+	 stack_t *temp;
 
 	 if (stack == NULL)
 	 {
@@ -39,8 +39,12 @@ void pop(stack_t **stack, unsigned int line_number)
 	 }
 	 else
 	 {
-		 new_node = *stack;
+		 temp = *stack;
 		 *stack = (*stack)->next;
-		 free(new_node);
+
+		 if (*stack != NULL)
+			 (*stack)->prev = NULL;
+
+		 free(temp);
 	 }
  }
