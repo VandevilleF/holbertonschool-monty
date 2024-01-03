@@ -42,7 +42,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 		/*Handle unknown func_array*/
 		if (func_array[i].opcode == NULL)
 		{
-			fprintf(stderr, "Error: Unknown func_array");
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruct);
 			exit(EXIT_FAILURE);
 		}
 		i = 0;
