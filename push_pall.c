@@ -36,7 +36,7 @@ void push(stack_t **head, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: unknown instruction %d\n", line_number, data);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, arg);
 		exit(EXIT_FAILURE);
 	}
 }
