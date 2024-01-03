@@ -10,11 +10,12 @@ void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node;
 	char *arg;
-	int data;
+	int data = 0;
 
 	arg = strtok(NULL, " \t\n");
+	data = atoi(arg);
 
-	if (atoi(arg) != 0)
+	if (data != 0)
 	{
 		new_node = malloc(sizeof(stack_t));
 
@@ -26,16 +27,13 @@ void push(stack_t **head, unsigned int line_number)
 		/*Add data in new node*/
 		new_node->n = data;
 		/*Set next to point to head*/
-		new_node->next = *head;
-		/*Set prev pointer to NULL*/
 		new_node->prev = NULL;
-		/*If list is not empty, set prev to the curent node head*/
+		new_node->next = *head;
 		if ((*head) != NULL)
 			(*head)->prev = new_node;
 
 		*head = new_node;
 	}
-	free(new_node);
 }
 
 /**

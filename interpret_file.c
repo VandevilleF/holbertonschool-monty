@@ -7,7 +7,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 	char line[1024]; /*Adjust the buffer size as needed*/
 
 	line_number = 0;
-	stack = NULL;
+	/*stack = NULL;*/
 	size_t len;
 	char *instruct, *argument;
 

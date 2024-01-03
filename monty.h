@@ -43,8 +43,6 @@ typedef struct instruction_s
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
-void execute_opcode(instruction_t func_array[],
-					stack_t **stack, unsigned int line_number);
 void interpret_file(const char *filename, instruction_t func_array[],
 					unsigned int line_number, stack_t **stack);
 

@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
 	filename = argv[1];
 	interpret_file(argv[1], func_array, line_number, &stack);
-	execute_opcode(func_array, &stack, line_number);
+	free_stack(&stack);
 
 	return (EXIT_SUCCESS); /*Successful execution*/
 }
