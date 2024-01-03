@@ -30,11 +30,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	if (argv[1] == NULL)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
 
 	interpret_file(argv[1], func_array, line_number, &stack);
 	free_stack(&stack);

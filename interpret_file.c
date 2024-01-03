@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * interpret_file - file interpreter for monty
+ * @filename: name of the file to be read
+ * @func_array: array of functions
+ * @line_number: line counter
+ * @stack: stack structure
+ * Return: 0 SUCCESS
+ */
 void interpret_file(const char *filename, instruction_t func_array[],
 					unsigned int line_number, stack_t **stack)
 {
@@ -14,7 +22,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 
 	if (!file)
 	{
-		perror("Error opening file");
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
