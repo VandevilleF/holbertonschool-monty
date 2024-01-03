@@ -11,6 +11,7 @@ void push(stack_t **head, unsigned int line_number)
 	stack_t *new_node;
 	char *arg;
 	int data = 0;
+	(void) line_number;
 
 	arg = strtok(NULL, " \t\n");
 	data = atoi(arg);

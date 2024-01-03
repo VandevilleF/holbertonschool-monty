@@ -8,7 +8,6 @@
  */
 int main(int argc, char *argv[])
 {
-	char *filename;
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 
@@ -37,7 +36,6 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	filename = argv[1];
 	interpret_file(argv[1], func_array, line_number, &stack);
 	free_stack(&stack);
 
