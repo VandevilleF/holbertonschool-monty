@@ -9,17 +9,14 @@
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node = *stack;
-
-	if (stack == NULL)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
-
 	else
-		printf("%d\n", new_node->n);
+		printf("%d\n", (*stack)->n);
 }
 
 /**
