@@ -21,6 +21,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
@@ -40,6 +41,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 		if (func_array[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruct);
+			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
 		i = 0;
