@@ -11,9 +11,15 @@ void push(stack_t **head, unsigned int line_number)
 	stack_t *new_node;
 	char *arg;
 	int data;
-	(void) line_number;
 
 	arg = strtok(NULL, " \t\n");
+
+	if (arg == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
 	data = atoi(arg);
 
 	if (data != 0)
