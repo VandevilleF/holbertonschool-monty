@@ -27,24 +27,26 @@ void interpret_file(const char *filename, instruction_t func_array[],
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line_number++;
-
 		instruct = strtok(line, " \n\t");
-		while (func_array[i].opcode != NULL)
+		if (instruct != NULL)
 		{
-			if (strcmp(func_array[i].opcode, instruct) == 0)
+			while (func_array[i].opcode != NULL)
 			{
-				func_array[i].f(stack, line_number);
-				break;
+				if (strcmp(func_array[i].opcode, instruct) == 0)
+				{
+					func_array[i].f(stack, line_number);
+					break;
+				}
+				i++;
 			}
-			i++;
+			if (func_array[i].opcode == NULL)
+			{
+				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruct);
+				free_stack(stack);
+				exit(EXIT_FAILURE);
+			}
+			i = 0;
 		}
-		if (func_array[i].opcode == NULL)
-		{
-			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruct);
-			free_stack(stack);
-			exit(EXIT_FAILURE);
-		}
-		i = 0;
 	}
 	free_stack(stack);
 	fclose(file);
