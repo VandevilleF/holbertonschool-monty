@@ -19,9 +19,7 @@ int main(int argc, char *argv[])
 		{"pop", pop},
 		{"swap", swap},
 		{"nop", nop},
-		/**
-		*{"add", add},
-		*/
+		{"add", add},
 		{NULL, NULL},
 	};
 

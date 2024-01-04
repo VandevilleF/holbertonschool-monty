@@ -12,7 +12,7 @@ void interpret_file(const char *filename, instruction_t func_array[],
 					unsigned int line_number, stack_t **stack)
 {
 	int i = 0;
-	char line[1024]; /*Adjust the buffer size as needed*/
+	char line[1024];
 	char *instruct;
 	FILE *file = fopen(filename, "r");
 
@@ -37,7 +37,6 @@ void interpret_file(const char *filename, instruction_t func_array[],
 			}
 			i++;
 		}
-		/*Handle unknown func_array*/
 		if (func_array[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruct);
