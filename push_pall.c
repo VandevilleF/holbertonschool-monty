@@ -11,6 +11,7 @@ void push(stack_t **head, unsigned int line_number)
 	stack_t *new_node;
 	char *arg;
 	int data;
+	unsigned int i;
 
 	arg = strtok(NULL, " \t\n");
 
@@ -19,33 +20,29 @@ void push(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	data = atoi(arg);
-
-	if (data != 0)
+	for (i = 0; i < strlen(arg); i++)
 	{
-		new_node = malloc(sizeof(stack_t));
-
-		if (new_node == NULL)
+		if ((arg[i] < '0' || arg[i] > '9') && arg[i] != '-')
 		{
-			fprintf(stderr, "Error: malloc failed\n");
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
-		/*Add data in new node*/
-		new_node->n = data;
-		/*Set next to point to head*/
-		new_node->prev = NULL;
-		new_node->next = *head;
-		if ((*head) != NULL)
-			(*head)->prev = new_node;
-
-		*head = new_node;
 	}
-	else
+	data = atoi(arg);
+	new_node = malloc(sizeof(stack_t));
+
+	if (new_node == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	new_node->n = data;
+	new_node->prev = NULL;
+	new_node->next = *head;
+	if ((*head) != NULL)
+		(*head)->prev = new_node;
+
+	*head = new_node;
 }
 
 /**
